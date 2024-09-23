@@ -15,7 +15,7 @@
 
 # vue3 和 vue2 组合式api，选项式api 的区别
 
-vue2 采用的是 选项式api 这种主要是 拆分成具体的data，methods，name，components以及 computed，watch，生命周期
+vue2 采用的是 选项式api 这种主要是 拆分成具体的data，methods，name，components，props以及 computed，watch，生命周期
 vue3 就是利用setup 这个钩子函数 将这些东西进行组合 setup 这个钩子函数 是运行在最前面的 比beforcreate 更早
 
 <script lang="ts">
@@ -1020,3 +1020,15 @@ import {useCountStore} from '@/store/name'
 来接受数据
 
 # 其他vue3 的api
+
+1. 注册全局组件 在 main.ts 里面 引入该组件 并且 用
+   app.component('hello',hello) 然后就可以在项目任意位置使用了
+2. 注册全局变量 在 vue 使用 Vue.prototype.x = 9 那么就可以全局使用了
+   在vue3 里面 要使用 app.config.globalProperties.x = 9 但是不建议使用
+3. 全局注册指令
+   app.directive('demo',(element,{value}) => {
+   element.innerText += value
+   element.style.color = 'red'
+   })
+   element 就是拿到的 这个html 标签 value就是他的值
+   然后 就可以使用 v-demo 这个指令 实现的效果就是字体颜色红色
