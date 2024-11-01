@@ -466,7 +466,7 @@ let dataList = reactive([
 <script setup>
   import {defineProps} from 'vue'
   // 这个时候就可以直接使用了
-  defineProps(['dataList'])
+  defineProps(['test'])
 </script>
 
 2. 接收数据，并且做限制类型
@@ -1015,9 +1015,20 @@ import {useCountStore} from '@/store/name'
 
 3. 作用域插槽
    可以在 slot 标签上 传递参数 ：data='data'
+   <slot :data="data"></slot>
 
-那么使用的时候 就可以用 template 上面 用 v-slot='data'
-来接受数据
+那么使用的时候 就可以用 template 上面 用 v-slot='parmas'
+直接在模版中使用
+<template v-slot="parmas">
+
+  <h3>{{ parmas.data }}</h3>
+</template>
+
+也可以 将 data 解构出来
+<template v-slot="{data}">
+
+  <h3>{{ data }}</h3>
+</template>
 
 # 其他vue3 的api
 
@@ -1032,3 +1043,5 @@ import {useCountStore} from '@/store/name'
    })
    element 就是拿到的 这个html 标签 value就是他的值
    然后 就可以使用 v-demo 这个指令 实现的效果就是字体颜色红色
+4. vue2 全局注册指令
+   Vue.directive 或者 directives:{ hello(element,{value}){这里操作 } }

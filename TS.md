@@ -321,7 +321,7 @@ if(A){
     console.log(data)
   }
   loadData<number>(100)
-  loadData(string)('张三')
+  loadData<string>('张三')
 </script>
 <!-- 泛型可以有多个 -->
 <script>
